@@ -1,7 +1,10 @@
 # Weather data from API
 
 ## Weather data provider:
-- https://openweathermap.org/
+- [openweathermap](https://openweathermap.org/)
+- [DWD](https://www.dwd.de/)
 
 ## Sources
 - https://www.geeksforgeeks.org/python-find-current-weather-of-any-city-using-openweathermap-api/
+- https://pypi.org/project/dwdweather2/
+
