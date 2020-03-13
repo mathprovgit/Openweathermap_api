@@ -5,7 +5,8 @@ Created on Fri Mar 13 11:11:26 2020
 @author: User
 """
 
-import requests, json
+import requests
+#import json
 import datetime as dt 
 import pandas as pd
 
@@ -14,8 +15,7 @@ def get_api_data(path__file):
         data=myfile.readlines()
     return data
 
-def weather_data_call(api_key,base_url,city_name):
-    
+def weather_data_call(api_key,base_url,city_name):    
     # base_url variable to store url 
     base_url =  base_url
 

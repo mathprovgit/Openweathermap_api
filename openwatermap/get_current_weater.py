@@ -7,25 +7,25 @@ Created on Fri Mar 13 10:26:47 2020
 
 # imports
 import os
-#import datetime as dt
-import json 
 import csv
+
 from time import sleep
 from  myfunc import get_api_data, weather_data_call,format_current
 
-# use self made func
+# get API data
 data=get_api_data("api_data/info.txt")
-#arrange data
+
+# api key
 api_key=data[0][:-1]
+# base_urls
 base_url_current=data[1][:-1]
-base_url_forcast=data[2][:-1]
+#base_url_forcast=data[2][:-1]
+
+# city name
 city_name=data[3][:-1]
 
-request=weather_data_call(api_key,base_url_current,city_name) 
-header=["datetime","temperature","humidity","pressure","windspeed","winddir","cloudcoverage","weather","description","weathericon","sunrisetime","sunsettime"]
-data_point=dict(zip(header, format_current(request))) 
-
-#if False:
+if False:
+    import json
     #build for tests
     #x=weather_data_call(api_key,base_url_current,city_name)
     
@@ -34,8 +34,8 @@ data_point=dict(zip(header, format_current(request)))
     #    f.write(x.content)
     
     #get test weather data
-    #with open('weather_test.json') as f:
-    #    data = json.load(f)
+    with open('weather_test.json') as f:
+        data = json.load(f)
   
     
 #loop
@@ -61,8 +61,11 @@ while True:
                writer.writeheader()          
         writer.writerow(data_point)
 
+
+    #wait 1 hours before next call
+    sleep(3600)
+    
+    #sleep(1)
     #if i>=3:
     #    break
     #i+=1
-    
-    sleep(60*5)
