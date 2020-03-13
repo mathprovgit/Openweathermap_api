@@ -5,3 +5,5 @@ openwatermap/forecast/
 openwatermap/api_data/
 
 openwatermap/weather_test.json
+
+openwatermap/rpi/

@@ -29,22 +29,29 @@ creds = ServiceAccountCredentials.from_json_keyfile_name('api_data/WDcred.json',
 
 #loop
 while True:
+    
     #get weather data from api        
     request=weather_data_call(api_key,base_url_current,city_name) 
     
-    #format the data
-    data_point_value=format_current(request)
-    
+    try:
+        #format the data
+        data_point_value=format_current(request)
+       
+    except:
+        data_point_value=[]
+        for i in range(12):
+            data_point_value.append('open weather API error')
+
     #append new data
     client = gspread.authorize(creds)
-    
+        
     #get current_weather_berlin sheet
-    current_weather = client.open('current_weater_berlin')
+    current_weather = client.open('current_weather_berlin')
     
     #append new data
     current_weather.sheet1.append_row(data_point_value)
 
     #wait 1 hours before next call
-    sleep(60*15)
+    sleep(3600)
     
    
