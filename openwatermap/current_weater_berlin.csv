@@ -1,2 +1,0 @@
-datetime,temperature,humidity,pressure,windspeed,winddir,cloudcoverage,weather,description,weathericon,sunrisetime,sunsettime
-[YYYY-MM-DD hh:mm:ss],[°C],[%],[hPa],[m/s],[°],[%],[-],[-],[-],[hh:mm_ss],[hh:mm_ss]
