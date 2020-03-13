@@ -4,3 +4,7 @@ api_key/
 openwatermap/current/
 
 openwatermap/forecast/
+
+openwatermap/api_data/
+
+openwatermap/weather_test.json

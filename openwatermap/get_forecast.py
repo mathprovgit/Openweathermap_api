@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on Fri Mar 13 11:07:13 2020
+
+@author: User
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Fri Mar 13 10:26:47 2020
 
 @author: User
@@ -16,7 +23,8 @@ from time import sleep
 with open ("api_key/api_key.txt", "r") as myfile:
     data=myfile.readlines()
 api_key = data[0]
-
+base_url = 
+city_name =
 
 #get data
 def weather_data_call(api_key):
