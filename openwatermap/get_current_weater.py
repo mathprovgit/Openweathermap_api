@@ -8,8 +8,8 @@ Created on Fri Mar 13 10:26:47 2020
 # imports
 import os
 import csv
-
 from time import sleep
+#own functions
 from  myfunc import get_api_data, weather_data_call,format_current
 
 # get API data
