@@ -52,6 +52,6 @@ while True:
     current_weather.sheet1.append_row(data_point_value)
 
     #wait 1 hours before next call
-    sleep(3600)
+    sleep(60*15)
     
    

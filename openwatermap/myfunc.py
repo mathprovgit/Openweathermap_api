@@ -32,20 +32,70 @@ def weather_data_call(api_key,base_url,city_name):
 # format values from the response
 def format_current(request):
     y=request.json()
-    vals=[str(dt.datetime.fromtimestamp(y['dt'])), # 
-          round((y['main']['temp']-273.15),2),
-          round((y['main']['humidity']),2),
-          round((y['main']['pressure']),2),
-          round((y['wind']['speed']),2),
-          y['wind']['deg'],
-          y['clouds']['all'],
-          y['weather'][0]['main'],
-          y['weather'][0]['description'],
-          y['weather'][0]['icon'],
-          str(dt.datetime.fromtimestamp(y['sys']['sunrise'])).split(' ')[1],
-          str(dt.datetime.fromtimestamp(y['sys']['sunset'])).split(' ')[1]         
-         ]
-    return vals
+    errormessage="not available"
+    
+    try:
+        datetime=str(dt.datetime.fromtimestamp(y['dt']))
+    except:
+        datetime=errormessage
+        
+    try:
+        temp=round((y['main']['temp']-273.15),2)
+    except:
+        temp=errormessage
+        
+    try:
+        humidity=round((y['main']['humidity']),2)
+    except:
+        humidity=errormessage
+        
+    try:
+        pressure=round((y['main']['pressure']),2)
+    except:
+        pressure=errormessage
+        
+    try:
+        windspeed=round((y['wind']['speed']),2)
+    except:
+        windspeed=errormessage
+        
+    try:
+        winddir=y['wind']['deg']
+    except:
+        winddir=errormessage
+    
+    try:
+        cloudcov=y['clouds']['all']
+    except:
+        cloudcov=errormessage
+        
+    try:
+        weather=y['weather'][0]['main']
+    except:
+        weather=errormessage
+        
+    try:
+        description=y['weather'][0]['description']
+    except:
+        description=errormessage
+    
+    try:
+        icon=y['weather'][0]['icon']
+    except:
+        icon=errormessage
+        
+    try:
+        sunrise=str(dt.datetime.fromtimestamp(y['sys']['sunrise'])).split(' ')[1]
+    except:
+        sunrise=errormessage
+        
+    try:
+        sunset=str(dt.datetime.fromtimestamp(y['sys']['sunset'])).split(' ')[1]
+    except:
+        sunset=errormessage
+
+    return [datetime, temp, humidity, pressure, windspeed, winddir, cloudcov,
+            weather, description,icon, sunrise, sunset]
 
 def format_forcast(request):
     y=request.json()
