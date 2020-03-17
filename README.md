@@ -32,6 +32,7 @@ for rpi settup:
  -[networ configuration for rpi0](https://kerneldriver.wordpress.com/2012/10/21/configuring-wpa2-using-wpa_supplicant-on-the-raspberry-pi/)
  - https://raspberrypihq.com/how-to-connect-your-raspberry-pi-to-wifi/
  -[system ctl](https://tecadmin.net/setup-autorun-python-script-using-systemd/)
+ -[system ctl 2](https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/)
  -[usb](https://www.raspberrypi-spy.co.uk/2014/05/how-to-mount-a-usb-flash-disk-on-the-raspberry-pi/)
 
 ## raspberry pi
