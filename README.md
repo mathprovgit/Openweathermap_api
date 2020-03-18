@@ -35,6 +35,7 @@ for rpi settup:
  -[system ctl 2](https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/)
  -[usb](https://www.raspberrypi-spy.co.uk/2014/05/how-to-mount-a-usb-flash-disk-on-the-raspberry-pi/)
 
+
 ## raspberry pi
 
 The python script will be loaded to a raspberry pi 0. The job of the pi is to get the current and forecast weather data
@@ -47,6 +48,9 @@ sudo systemctl enable get_cur_weather.service
 sudo systemctl start get_cur_weather.service
 sudo systemctl status get_cur_weather.service
 ```
+
+ -find files:
+  ```find /path/to/folder/ -iname *file_name_portion*```
 
 command to copy from usb
 lsblk
