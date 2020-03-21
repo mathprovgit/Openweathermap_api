@@ -31,9 +31,9 @@ for google API
 for rpi settup:
  -[networ configuration for rpi0](https://kerneldriver.wordpress.com/2012/10/21/configuring-wpa2-using-wpa_supplicant-on-the-raspberry-pi/)
  - https://raspberrypihq.com/how-to-connect-your-raspberry-pi-to-wifi/
- -[system ctl](https://tecadmin.net/setup-autorun-python-script-using-systemd/)
  -[system ctl 2](https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/)
- -[usb](https://www.raspberrypi-spy.co.uk/2014/05/how-to-mount-a-usb-flash-disk-on-the-raspberry-pi/)
+ -[copy usb to local](https://www.raspberrypi-spy.co.uk/2014/05/how-to-mount-a-usb-flash-disk-on-the-raspberry-pi/)
+ -[numpy issu on pi](https://github.com/numpy/numpy/issues/14772)
 
 
 ## raspberry pi
@@ -43,10 +43,14 @@ The python script will be loaded to a raspberry pi 0. The job of the pi is to ge
 
  commands about the service
 ```python
-sudo systemctl daemon-reload
-sudo systemctl enable get_cur_weather.service
-sudo systemctl start get_cur_weather.service
-sudo systemctl status get_cur_weather.service
+sudo nano /lib/systemd/system/get_current_weather_ggapi.service # edit
+
+sudo chmod 644 /lib/systemd/system/myscript.service # permission
+#service handle
+sudo systemctl daemon-reload 
+sudo systemctl enable get_current_weather_ggapi.service
+sudo systemctl start get_current_weather_ggapi.service
+sudo systemctl status get_current_weather_ggapi.service
 ```
 
  -find files:

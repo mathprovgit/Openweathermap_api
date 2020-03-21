@@ -97,7 +97,7 @@ def format_current(request):
     return [datetime, temp, humidity, pressure, windspeed, winddir, cloudcov,
             weather, description,icon, sunrise, sunset]
 
-def format_forcast(request):
+def format_forecast(request):
     y=request.json()
     weather_data=[]
     for i in range(len(y['list'])):
