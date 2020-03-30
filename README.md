@@ -26,6 +26,9 @@ for dwdweather
 - https://pypi.org/project/dwdweather2/
 for google API
 - https://towardsdatascience.com/accessing-google-spreadsheet-data-using-python-90a5bc214fd2
+python and googlesheets
+- https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html
+- https://towardsdatascience.com/using-python-to-push-your-pandas-dataframe-to-google-sheets-de69422508f
 
 #### settings
 for rpi settup:
