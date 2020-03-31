@@ -114,8 +114,8 @@ def format_forecast(request):
                             ])
 
     df_weather=pd.DataFrame(weather_data,columns=['datetime_f','temp_f','humidity_f','pressure_f','wind_speed_f','wind_dir_f','cloudcoverage_f','weather_f','description_f','icon_f'])
-    df_weather.set_index(pd.to_datetime(df_weather.datetime),inplace=True)
-    df_weather.drop('datetime',axis=1,inplace=True)
+    df_weather.set_index(pd.to_datetime(df_weather.datetime_f),inplace=True)
+    df_weather.drop('datetime_f',axis=1,inplace=True)
     #kelvin to degree
-    df_weather['temp']=df_weather['temp']-273.15
+    df_weather['temp_f']=round(df_weather['temp_f']-273.15,2)
     return df_weather
