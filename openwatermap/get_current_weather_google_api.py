@@ -13,22 +13,26 @@ from  myfunc import get_api_data, weather_data_call,format_current
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+#os
+import os
+
 # Authentication to openweathermap
-data=get_api_data("api_data/info.txt")
+base_path=os.getcwd()
+data=get_api_data(base_path+"/api_data/info.txt")
 # api key
 api_key=data[0][:-1]
 # base_urls
-#base_url_current=data[1][:-1]
+base_url_current=data[1][:-1]
 base_url_forcast=data[2][:-1]
 # city name
 city_name=data[3][:-1]
 
 #authentication to google api using JSON credential file
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('api_data/WDcred.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name(base_path+'/api_data/WDcred.json', scope)
 
-#loop
-while True:
+#loop current
+while False:
     
     #get weather data from api        
     request=weather_data_call(api_key,base_url_current,city_name) 
@@ -52,6 +56,32 @@ while True:
     current_weather.sheet1.append_row(data_point_value)
 
     #wait 1 hours before next call
-    sleep(60*15)
+    sleep(3600)
 
    
+#loop forecast
+while False:
+    
+    #get weather data from api        
+    request=weather_data_call(api_key,base_url_forcast,city_name) 
+    
+#    try:
+#        #format the data
+#        data_point_value=format_current(request)
+#       
+#    except:
+#        data_point_value=[]
+#        for i in range(12):
+#            data_point_value.append('open weather API error')
+#
+#    #append new data
+#    client = gspread.authorize(creds)
+#        
+#    #get current_weather_berlin sheet
+#    current_weather = client.open('current_weather_berlin')
+#    
+#    #append new data
+#    current_weather.sheet1.append_row(data_point_value)
+
+    #wait 1 hours before next call
+    sleep(3600*3)
