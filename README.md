@@ -7,7 +7,7 @@
  - [x] get current and forecast weather data from api
  - [x] put data in a database json/csv format
  - [x] put the database online with google drive and google api
- - [ ] automatise the 3 previous step by loading the script on a rpi 0 that will do the job continuously
+ - [x] automatise the 3 previous step by loading the script on a rpi 0 that will do the job continuously
  - [ ] link the database to a public tableau and create a viz : [my public tableau](https://public.tableau.com/profile/mathieu.provost#!/)
  - [ ] create a maschine learning model to predict the weather 
  - [ ] compare the maschine learning prediction with the official forecast and determine the best
