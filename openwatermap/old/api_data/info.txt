@@ -1,0 +1,9 @@
+0c1833c6c847a2a841c35dc0abceca3c
+http://api.openweathermap.org/data/2.5/weather?
+http://api.openweathermap.org/data/2.5/forecast?
+Berlin,de
+provost.mth@gmail.com
+''jlsd
+pi
+usr: mathieu
+psswd: ""#lptp 
