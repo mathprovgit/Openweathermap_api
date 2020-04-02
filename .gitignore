@@ -8,4 +8,8 @@ openwatermap/weather_test.json
 
 openwatermap/rpi/
 
+<<<<<<< HEAD
 api_data/
+=======
+old/
+>>>>>>> master
