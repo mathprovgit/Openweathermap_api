@@ -6,7 +6,10 @@ Created on Fri Mar 13 10:26:47 2020
 """
 
 #imports
-from time import sleep
+import time 
+#datetime
+import datetime as dt
+
 #own functions
 from  myfunc import get_api_data, weather_data_call, format_current, format_forecast
 #google api
@@ -16,6 +19,8 @@ from df2gspread import df2gspread as d2g
 
 #os
 import os
+
+
 
 # Authentication to openweathermap
 base_path=os.getcwd()
@@ -33,60 +38,68 @@ scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/aut
 creds = ServiceAccountCredentials.from_json_keyfile_name(base_path+'/api_data/WDcred.json', scope)
 
 #loop current
-while False:
-    
-    #get weather data from api        
-    request=weather_data_call(api_key,base_url_current,city_name) 
-    
-    try:
-        #format the data
-        data_point_value=format_current(request)
-       
-    except:
-        data_point_value=[]
-        for i in range(12):
-            data_point_value.append('open weather API error on current weather')
-
-    #append new data
-    client = gspread.authorize(creds)
-        
-    #get current_weather_berlin sheet
-    current_weather = client.open('current_weather_berlin')
-    
-    #append new data
-    current_weather.sheet1.append_row(data_point_value)
-
-    #wait 1 hours before next call
-    sleep(3600)
-
-   
-#loop forecast
 while True:
     
-    #get weather data from api        
-    request_f=weather_data_call(api_key,base_url_forcast,city_name) 
+    sleep = dt.datetime.now().minute 
     
-    try:
-        #format the data
-        df_weather=format_forecast(request_f)
-       
-    except:
-        data_point_value=[]
-        for i in range(12):
-            data_point_value.append('open weather API error on forecast weather')
-
-    #append new data
-    client_f = gspread.authorize(creds)
+    if sleep==0:
+        #get weather data from api        
+        request=weather_data_call(api_key,base_url_current,city_name) 
         
-    #get current_weather_berlin sheet
-    forecast_weather = client_f.open('forecast_weather_berlin')
+        try:
+            #format the data
+            data_point_value=format_current(request)
+           
+        except:
+            data_point_value=[]
+            for i in range(12):
+                data_point_value.append('open weather API error on current weather')
     
-    # get workbook id
-    spreadsheet_key = forecast_weather.id
+        #append new data
+        client = gspread.authorize(creds)
+            
+        #get current_weather_berlin sheet
+        current_weather = client.open('current_weather_berlin')
+        
+        #append new data
+        current_weather.sheet1.append_row(data_point_value)
     
-    #replace the old forecast with the new
-    wks_name='Sheet1'
-    d2g.upload(df_weather, spreadsheet_key, wks_name, credentials=creds, row_names=True)
+        #wait 1 minute
+        time.sleep(60)
 
-    #wait 1 hours before next call
-    sleep(3600*3)
+   
+    elif sleep==30:
+        
+        #get weather data from api        
+        request_f=weather_data_call(api_key,base_url_forcast,city_name) 
+        
+        try:
+            #format the data
+            df_weather=format_forecast(request_f)
+           
+        except:
+            data_point_value=[]
+            for i in range(12):
+                data_point_value.append('open weather API error on forecast weather')
+    
+        #append new data
+        client_f = gspread.authorize(creds)
+            
+        #get current_weather_berlin sheet
+        forecast_weather = client_f.open('forecast_weather_berlin')
+        
+        # get workbook id
+        spreadsheet_key = forecast_weather.id
+        
+        #replace the old forecast with the new
+        wks_name='Sheet1'
+        d2g.upload(df_weather, spreadsheet_key, wks_name, credentials=creds, row_names=True)
+    
+        #wait 1 minute
+        time.sleep(60)
+    
+    else:
+        #wait 1 minute
+        time.sleep(60)
+        
+    
