@@ -20,15 +20,19 @@
 - [CDC](https://cdc.dwd.de/portal/)
 
 #### Python scripting
-for openweathermap
+for openweathermap:
 - [openweathermap API handling](https://www.geeksforgeeks.org/python-find-current-weather-of-any-city-using-openweathermap-api/)
-for dwdweather
+
+for dwdweather:
 - [Pypi dwdweather](https://pypi.org/project/dwdweather2/)
-for google API
+
+for google API:
 - [getting started with google API](https://towardsdatascience.com/accessing-google-spreadsheet-data-using-python-90a5bc214fd2)
-python and googlesheets
+
+python and googlesheets:
 - [sheet handling](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
 - [pandas df to sheet](https://towardsdatascience.com/using-python-to-push-your-pandas-dataframe-to-google-sheets-de69422508f)
+
 
 #### other useful links 
 for rpi settup:
