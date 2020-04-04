@@ -68,6 +68,16 @@ def format_current(request):
         cloudcov=y['clouds']['all']
     except:
         cloudcov=errormessage
+    
+    try:
+        rain=y['rain']['1h']
+    except:
+        rain=0
+        
+    try:
+        snow=y['snow']['1h']
+    except:
+        snow=0
         
     try:
         weather=y['weather'][0]['main']
@@ -95,27 +105,79 @@ def format_current(request):
         sunset=errormessage
 
     return [datetime, temp, humidity, pressure, windspeed, winddir, cloudcov,
-            weather, description,icon, sunrise, sunset]
+            weather,rain,snow, description,icon, sunrise, sunset]
 
 def format_forecast(request):
-    y=request.json()
+    errormessage="not available"
+    y=request.json()  
     weather_data=[]
     for i in range(len(y['list'])):
-        weather_data.append([y['list'][i]['dt_txt'],
-                             y['list'][i]['main']['temp'],
-                             y['list'][i]['main']['humidity'],
-                             y['list'][i]['main']['pressure'],
-                             y['list'][i]['wind']['speed'],
-                             y['list'][i]['wind']['deg'],
-                             y['list'][i]['clouds']['all'],
-                             y['list'][i]['weather'][0]['main'],
-                             y['list'][i]['weather'][0]['description'],
-                             y['list'][i]['weather'][0]['icon']
-                            ])
+        try:
+            datetime=y['list'][i]['dt_txt']
+        except:
+            datetime=errormessage
+            
+        try:
+            temp=round(y['list'][i]['main']['temp'],2)
+        except:
+            temp=errormessage
+            
+        try:
+            humidity=(y['main']['humidity'])
+        except:
+            humidity=errormessage
+            
+        try:
+            pressure=y['list'][i]['main']['pressure']
+        except:
+            pressure=errormessage
+            
+        try:
+            windspeed=round(y['list'][i]['wind']['speed'],1)
+        except:
+            windspeed=errormessage
+            
+        try:
+            winddir=y['list'][i]['wind']['deg']
+        except:
+            winddir=errormessage
+        
+        try:
+            cloudcov=y['list'][i]['clouds']['all']
+        except:
+            cloudcov=errormessage
+            
+        try:
+            rain=y['list'][i]['rain']['3h']
+        except:
+            rain=0
+        
+        try:
+            snow=y['list'][i]['snow']['3h']
+        except:
+            snow=0
+            
+        try:
+            weather=y['list'][i]['weather'][0]['main']
+        except:
+            weather=errormessage
+            
+        try:
+            description=y['list'][i]['weather'][0]['description']
+        except:
+            description=errormessage
+        
+        try:
+            icon=y['list'][i]['weather'][0]['icon']
+        except:
+            icon=errormessage
+            
+        weather_data.append([datetime, temp, humidity, pressure, windspeed, winddir, cloudcov,
+            rain, snow, weather, description,icon])
 
-    df_weather=pd.DataFrame(weather_data,columns=['datetime_f','temp_f','humidity_f','pressure_f','wind_speed_f','wind_dir_f','cloudcoverage_f','weather_f','description_f','icon_f'])
-    df_weather.set_index(pd.to_datetime(df_weather.datetime_f),inplace=True)
-    df_weather.drop('datetime_f',axis=1,inplace=True)
+    df_weather=pd.DataFrame(weather_data,columns=['datetime','temp','humidity','pressure','wind_speed','wind_dir','cloudcoverage','rain3h','snow3h','weather','description','icon'])
+    df_weather.set_index(pd.to_datetime(df_weather.datetime),inplace=True)
+    df_weather.drop('datetime',axis=1,inplace=True)
     #kelvin to degree
-    df_weather['temp_f']=round(df_weather['temp_f']-273.15,2)
+    df_weather['temp']=round(df_weather['temp']-273.15,2)
     return df_weather
