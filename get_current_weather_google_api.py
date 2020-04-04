@@ -89,12 +89,14 @@ def update_forecast(creds,api_key,base_url_forcast,city_name):
     wks_name='Sheet1'
     
     d2g.upload(df_weather, spreadsheet_key, wks_name, credentials=creds, row_names=True)
+
+
   
 # After every hour geeks() is called. 
 schedule.every().hour.do(update_current(creds,api_key,base_url_current,city_name)) 
   
 # Every day at 12am or 00:00 time bedtime() is called. 
-schedule.every().day.at("12:30").do(update_forecast(creds,api_key,base_url_forcast,city_name)) 
+schedule.every().day.at("12:30").do(update_forecast(creds,api_key,base_url_current,city_name)) 
   
 # Loop so that the scheduling task 
 # keeps on running all time. 

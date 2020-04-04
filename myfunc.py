@@ -105,7 +105,7 @@ def format_current(request):
         sunset=errormessage
 
     return [datetime, temp, humidity, pressure, windspeed, winddir, cloudcov,
-            weather,rain,snow, description,icon, sunrise, sunset]
+            rain,snow,weather, description,icon, sunrise, sunset]
 
 def format_forecast(request):
     errormessage="not available"
