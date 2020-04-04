@@ -40,7 +40,7 @@ scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/aut
 creds = ServiceAccountCredentials.from_json_keyfile_name(base_path+'/api_data/WDcred.json', scope)
 
 
-def update_current(creds,api_key,base_url_current,city_name):
+def update_current(creds=creds,api_key=api_key,base_url=base_url_current,city=city_name):
     #get weather data from api        
     request=weather_data_call(api_key,base_url_current,city_name) 
     
@@ -62,7 +62,7 @@ def update_current(creds,api_key,base_url_current,city_name):
     #append new data
     current_weather.sheet1.append_row(data_point_value)
 
-def update_forecast(creds,api_key,base_url_forcast,city_name):   
+def update_forecast(creds=creds,api_key=api_key,base_url=base_url_forcast,city=city_name):   
  
     #get weather data from api        
     request_f=weather_data_call(api_key,base_url_forcast,city_name) 
@@ -91,12 +91,13 @@ def update_forecast(creds,api_key,base_url_forcast,city_name):
     d2g.upload(df_weather, spreadsheet_key, wks_name, credentials=creds, row_names=True)
 
 
+
   
 # After every hour geeks() is called. 
-schedule.every().hour.do(update_current(creds,api_key,base_url_current,city_name)) 
+schedule.every().hour.do(update_current) 
   
 # Every day at 12am or 00:00 time bedtime() is called. 
-schedule.every().day.at("12:30").do(update_forecast(creds,api_key,base_url_current,city_name)) 
+schedule.every().day.at("13:45").do(update_forecast) 
   
 # Loop so that the scheduling task 
 # keeps on running all time. 

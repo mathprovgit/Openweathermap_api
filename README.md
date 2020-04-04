@@ -21,11 +21,11 @@
 
 #### Code
 for openweathermap
-- https://www.geeksforgeeks.org/python-find-current-weather-of-any-city-using-openweathermap-api/
+- [openweathermap API handling](https://www.geeksforgeeks.org/python-find-current-weather-of-any-city-using-openweathermap-api/)
 for dwdweather
-- https://pypi.org/project/dwdweather2/
+- [Pypi dwdweather](https://pypi.org/project/dwdweather2/)
 for google API
-- https://towardsdatascience.com/accessing-google-spreadsheet-data-using-python-90a5bc214fd2
+- [getting started with google API](https://towardsdatascience.com/accessing-google-spreadsheet-data-using-python-90a5bc214fd2)
 python and googlesheets
 - [sheet handling](https://www.twilio.com/blog/2017/02/an-easy-way-to-read-and-write-to-a-google-spreadsheet-in-python.html)
 - [pandas df to sheet](https://towardsdatascience.com/using-python-to-push-your-pandas-dataframe-to-google-sheets-de69422508f)
@@ -33,7 +33,7 @@ python and googlesheets
 #### settings
 for rpi settup:
  -[networ configuration for rpi0](https://kerneldriver.wordpress.com/2012/10/21/configuring-wpa2-using-wpa_supplicant-on-the-raspberry-pi/)
- - https://raspberrypihq.com/how-to-connect-your-raspberry-pi-to-wifi/
+ -[connect RPI0 to wifi](https://raspberrypihq.com/how-to-connect-your-raspberry-pi-to-wifi/)
  -[system ctl 2](https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/)
  -[copy usb to local](https://www.raspberrypi-spy.co.uk/2014/05/how-to-mount-a-usb-flash-disk-on-the-raspberry-pi/)
  -[numpy issu on pi](https://github.com/numpy/numpy/issues/14772)
@@ -49,6 +49,7 @@ The python script will be loaded to a raspberry pi 0. The job of the pi is to ge
 sudo nano /lib/systemd/system/get_current_weather_ggapi.service # edit
 
 sudo chmod 644 /lib/systemd/system/myscript.service # permission
+
 #service handle
 sudo systemctl daemon-reload 
 sudo systemctl enable get_current_weather_ggapi.service

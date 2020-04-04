@@ -123,7 +123,7 @@ def format_forecast(request):
             temp=errormessage
             
         try:
-            humidity=(y['main']['humidity'])
+            humidity=(y['list'][i]['main']['humidity'])
         except:
             humidity=errormessage
             
