@@ -7,6 +7,7 @@ Created on Fri Mar 13 10:26:47 2020
 
 #imports
 import time 
+import datetime as dt
 
 #own functions
 from  myfunc import get_api_data, weather_data_call, format_current, format_forecast
@@ -86,7 +87,7 @@ def update_forecast(creds=creds,api_key=api_key,base_url=base_url_forcast,city=c
     spreadsheet_key = forecast_weather.id
     
     #replace the old forecast with the new
-    wks_name='Sheet1'
+    wks_name= str((dt.datetime.now().timetuple().tm_yday +1 ) % 7)+' th'
     
     d2g.upload(df_weather, spreadsheet_key, wks_name, credentials=creds, row_names=True)
 
@@ -97,7 +98,7 @@ def update_forecast(creds=creds,api_key=api_key,base_url=base_url_forcast,city=c
 schedule.every().hour.do(update_current) 
   
 # Every day at 12am or 00:00 time bedtime() is called. 
-schedule.every().day.at("13:45").do(update_forecast) 
+schedule.every().day.at("06:30").do(update_forecast) 
   
 # Loop so that the scheduling task 
 # keeps on running all time. 
