@@ -64,8 +64,8 @@ def update_forecast(creds=creds,api_key=api_key,base_url=base_url_forcast,city=c
     spreadsheet_key = forecast_weather.id
     
     #replace the old forecast with the new
-    #wks_name= str((dt.datetime.now().timetuple().tm_yday +1 ) % 7)+' th'
-    wks_name= str((dt.datetime.now().hour) % 3 )+' th'
+    wks_name= str((dt.datetime.now().timetuple().tm_yday +1 ) % 7)+' th'
+    #wks_name= str((dt.datetime.now().hour) % 3 )+' th'
     
     #upload the forcast datafrane to the googlesheet
     d2g.upload(df_weather, spreadsheet_key, wks_name, credentials=creds, row_names=True)
