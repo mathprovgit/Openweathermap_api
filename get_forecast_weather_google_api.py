@@ -37,7 +37,7 @@ city_name=data[3][:-1]
 
 #authentication to google api using JSON credential file
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name(base_path+'/api_data/WDcred.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name(base_path+'/api_data/WDcred2.json', scope)
 
 
 def update_forecast(creds=creds,api_key=api_key,base_url=base_url_forcast,city=city_name):   
@@ -64,12 +64,18 @@ def update_forecast(creds=creds,api_key=api_key,base_url=base_url_forcast,city=c
     spreadsheet_key = forecast_weather.id
     
     #replace the old forecast with the new
-    wks_name= str((dt.datetime.now().timetuple().tm_yday +1 ) % 7)+' th'
+    #wks_name= str((dt.datetime.now().timetuple().tm_yday +1 ) % 7)+' th'
+    wks_name= str((dt.datetime.now().hour) % 3 )+' th'
     
+    #upload the forcast datafrane to the googlesheet
     d2g.upload(df_weather, spreadsheet_key, wks_name, credentials=creds, row_names=True)
+    
+    #sleep for one minute
+    time.sleep(60)   
   
 # Every day at 12am or 00:00 time bedtime() is called. 
-schedule.every().day.at("06:30").do(update_forecast) 
+#schedule.every().day.at("06:30").do(update_forecast) 
+schedule.every().hour.do(update_forecast) 
   
 # Loop so that the scheduling task 
 # keeps on running all time. 
@@ -78,5 +84,5 @@ while True:
     # Checks whether a scheduled task  
     # is pending to run or not 
     schedule.run_pending() 
-    time.sleep(1)         
+    time.sleep(60)         
     
