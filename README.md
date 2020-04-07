@@ -71,8 +71,11 @@ sudo chmod 644 /lib/systemd/system/myscript.service # permission
 #service handle
 sudo systemctl daemon-reload 
 sudo systemctl enable get_current_weather_ggapi.service
+sudo systemctl enable get_forecast_weather_ggapi.service
 sudo systemctl start get_current_weather_ggapi.service
+sudo systemctl start get_forecast_weather_ggapi.service
 sudo systemctl status get_current_weather_ggapi.service
+sudo systemctl status get_forecast_weather_ggapi.service
 ```
 
  -find files:
