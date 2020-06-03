@@ -43,7 +43,7 @@ for rpi settup:
  -[numpy issu on pi](https://github.com/numpy/numpy/issues/14772)
 
 
-## The python script 
+## Python Script 
 
 The notebooks:
  - forecast.ipynb
